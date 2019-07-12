@@ -21,28 +21,48 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Titel Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+      <!-- Added link to the jQuery Library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
 <body>
 
     <div class="game">
-        <div class="container center" style="background-color: black;">
+        <div class="container center" style="background-color: black;" id="gameConsole">
             <h1
-                style="text-align: center; font-family: 'Rubik Mono One', sans-serif; font-size: 200px; color: red; font-style: bold; text-shadow: 5px 5px blue">
-                NBA<br>Jam</h1>
+                style="text-align: center; font-family: 'Rubik Mono One', sans-serif; font-size: 75px; color: red; font-style: bold; text-shadow: 5px 5px blue">
+                NBA Jam</h1>
             <h2
-                style="text-align: center; font-family: 'Rubik Mono One', sans-serif; font-size: 50px; color: red; font-style: bold; text-shadow: 1px 1px blue">
+                style="text-align: center; font-family: 'Rubik Mono One', sans-serif; font-size: 25px; color: red; font-style: bold; text-shadow: 1px 1px blue">
                 Hangman Additon</h2>
-            <h2 style="text-align: center; color: green; text-shadow: 1px 1px black">Press Enter</h2>
+                <div>
+
+                    <div id="letter"></div>
+
+                    <h4>Wins: </h4>
+                    <h4 class="playerWins">0</h4>
+
+                    <h4>Loses: </h4>
+                    <h4 class="playerLoses">0</h4>
+
+                    <h4>Guesses Left: </h4>
+                    <h4 id="playerGuessesLeft">10</h4>
+
+                    <h4>Letters Guessed: </h4>
+                    <h4 id="playerGuesses"></h4>
+
+                    
+                </div>
+                <button type="button" class="btn" id="startReset"
+                    style="font-family: 'DM Serif Display', serif;" onclick="startGame();">Begin</button>
         </div>
     </div>
 
     <iframe width="0" height="0" src="https://www.youtube.com/embed/glT_crHWifc?autoplay=1&loop=1" frameborder="0"
         allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="assets/javascript/app.js"></script>
 
 </body>
 

@@ -1,128 +1,130 @@
-// Game 
+// Game
 
 var startGame = function () {
 
-    //Display Starting Board & Messages
-    document.getElementById("startMessage").innerHTML = "Lets begin...";
-    document.getElementById("playerWins").innerHTML = 0;
-    document.getElementById("playerLoses").innerHTML = 0;
-    document.getElementById("playerGuessesLeft").innerHTML = 5;
-    document.getElementById("playerGuesses").innerHTML = "";
-    document.getElementById("startReset").innerHTML = "Reset";
+    console.log("Game Started");
 
-    // Variables
+    var teams = [
+        'Hawks',
+        'Celtics',
+        'Nets',
+        'Hornets',
+        'Bulls',
+        'Cavaliers',
+        'Mavericks',
+        'Nuggets',
+        'Pistons',
+        'Warriors',
+        'Rockets',
+        'Pacers',
+        'Clippers',
+        'Lakers',
+        'Grizzlies',
+        'Heat',
+        'Bucks',
+        'Timberwolves',
+        'Pelicans',
+        'Knicks',
+        'Thunder',
+        'Magic',
+        'Sixers',
+        'Suns',
+        'Trail Blazers',
+        'Kings',
+        'Spurs',
+        'Raptors',
+        'Jazz',
+        'Wizards'
+    ];
+
+    // Random Team Selection
+    var team = Math.floor(Math.random() * teams[length]);
+    // Log Random Team Selection
+    console.log(team);
+    // Calculate the # characters in the string/ randomly selected value
+    var n = team.length;
+    // Log # of characters
+    console.log(n);
+
     var playerWins = 0;
     var playerLoses = 0;
-    var playerGuessesLeft = 5;
+    var playerGuessesLeft = 10;
     var playerGuesses = "";
-    var computerChoice = "a";
-        // Variable type for computer choice
-    console.log(typeof computerChoice);
-    var letters = [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "l",
-        "m",
-        "n",
-        "o",
-        "p",
-        "q",
-        "r",
-        "s",
-        "t",
-        "u",
-        "v",
-        "x",
-        "y",
-        "z"
-    ];
-    var computerChoice = letters[Math.floor(Math.random() * letters.length)];
+    var word = $("#Word");
 
-    //Display Computer Choice
-    console.log("Computer Choice: " + computerChoice);
+    // Take the randomly chosen word - loop though the word and seperate each letter into a div
+    for (i = 0; i < team.length; i++) {
+        // var = div
+        var letter =  $("<div>");
+        // add class
+        letter.addclass("letterDisplay");
+        // add value
+        letter.attr("id", team.charAt(i));
+        // location
+        letter.attr("location", team[i]);
+        // add text
+        letter.text("-");
+        // append
+        $("#letter").append(letter);
 
+    };
 
-    // Compare Computer to Person & make calculations on Key Press
     document.onkeyup = function (event) {
+        // Variables
+        var userInput = event.key.LowerCase();
+        // Log user Input
+        console.log(userInput);
 
-        var userInput = event.key.toLowerCase();
-        // Log User Input
-        console.log("User Choice: " + userInput);
-        // Do the choices match?
-        console.log(computerChoice == userInput);
-        // Type of variable - computer choice
-        console.log("CC " + typeof computerChoice);
-        // Type of variable - user input 
-        console.log("UI " + typeof userInput);
+        var divIdSearch = "#" + userInput
 
-        // Determine if player guess is a match
-        if (computerChoice == userInput) {
-            // + Win
-            playerWins++;
-            // Print Win Value
-            document.getElementById("playerWins").innerHTML = playerWins;
-            // Update Guesses Left
-            playerGuessesLeft = 5;
-            // Print Guesses Left
-            document.getElementById("playerGuessesLeft").innterHTML = playerGuessesLeft;
-            // Computer Chooses new Letter
-            var computerChoice = letters[Math.floor(Math.random() * letters.length)];
-            // Console Log New Letter
-            console.log("New Guess: " + computerChoice);
-            // Clear Player Guesses
-            playerGuesses = "";
-            // Print PlayerGuesses
-            document.getElementById("playerGuesses").innerHTML = playerGuesses;
+        var match = team.match();
 
-        } else {
-            // - Guesses Left
+        // count # of matches
+        // var numMatchs
+
+        // If userInput === <div> value
+        if(match !== null) {
+        // update shown value from - to letter
+            $(divIdSearch).text(userInput);
+        // update # left n - numMatchs
+            n = n - numMatchs;
+        }
+        else{
+            // update guesses left
             playerGuessesLeft--;
-            // Print Guesses Left
-            document.getElementById("playerGuessesLeft").innerHTML = playerGuessesLeft;
-            // Update Guesses so Far
-            playerGuesses = playerGuesses + "; " + userInput
-            // Print Guesses so Far
-            document.getElementById("playerGuesses").innerHTML = playerGuesses;
-        }
+            // if not, update previous guesses
+            playerGuesses = playerGuesses + ";" + userInput;
+        };
 
-        if (playerGuessesLeft === 0) {
-            // + Loses
-            playerLoses++;
-            // Print Loss 
-            document.getElementById("playerLoses").innerHTML = playerLoses;
-            // Reset Player Guesses
-            playerGuessesLeft = 5;
-            // Print Guesses Left
-            document.getElementById("playerGuessesLeft").innterHTML = playerGuessesLeft;
-            // Computer Chooses new Letter
-            var computerChoice = letters[Math.floor(Math.random() * letters.length)];
-            // Console Log New Letter
-            console.log("New Guess: " + computerChoice);
-            // Clear Player Guesses
-            playerGuesses = "";
-            // Print PlayerGuesses
-            document.getElementById("playerGuesses").innerHTML = playerGuesses;
+        if(n===0){
+            //plus win
+            playerWins++;
+            //restart
+        };
 
-        } else {
+        if(playerGuessesLeft===0){
+            // plus loss
+            playerLoses--;
+            // restart
+        };
 
-        }
-
-    }
+    };
 }
 
 
 
-// Random Notes:
-// Reset Means: Update Computer Guess, Update Guesses Left, Update Guesses so far
-// document.writeln(); << this adds
-// document.onkeyup = function (event) {
-// Object.addEventListener("click", startGame);
+// Press Button to Begin Game (Function)
+// Define Variables
+// Define loses variable
+// Define Wins variable
+// Define Current Guesses variable
+// Define Guesses Left variable
+// Var Team Array
+// var randomTeam  = (random team) from Array
+// Take the randomly chosen word
+// loop though the word and seperate each letter into an array 
+// print each letter individually onto page onto a <div> with text "-" & value = letter
+// when user inputs, loop through array to determine if the input = value
+// if true, update value 
+// if not, update previous guesses
+// update guesses left
