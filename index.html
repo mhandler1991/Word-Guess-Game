@@ -21,8 +21,8 @@
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <!-- Titel Font -->
     <link href="https://fonts.googleapis.com/css?family=Rubik+Mono+One&display=swap" rel="stylesheet">
-      <!-- Added link to the jQuery Library -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Added link to the jQuery Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 </head>
 
@@ -36,31 +36,40 @@
             <h2
                 style="text-align: center; font-family: 'Rubik Mono One', sans-serif; font-size: 25px; color: red; font-style: bold; text-shadow: 1px 1px blue">
                 Hangman Additon</h2>
-                <div>
+            <div>
 
-                    <div id="letter"></div>
-
-                    <h4>Wins: </h4>
-                    <h4 class="playerWins">0</h4>
-
-                    <h4>Loses: </h4>
-                    <h4 class="playerLoses">0</h4>
-
-                    <h4>Guesses Left: </h4>
-                    <h4 id="playerGuessesLeft">10</h4>
-
-                    <h4>Letters Guessed: </h4>
-                    <h4 id="playerGuesses"></h4>
-
-                    
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="word" style="align-content: center;"></div>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Wins:</h1>
+                            <h2 id="wins" style="float: left"></h2>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Losses:</h1>
+                            <h2 id="losses" style="float: left"></h2>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Guesses:</h1>
+                            <h2 id="guesses" style="float: left"></h2>
+                        </div>
+                        <div class="col-lg-12">
+                            <h1>Guesses Left:</h1>
+                            <h2 id="guessesLeft" style="float: left"></h2>
+                        </div>
+                    </div>
                 </div>
-                <button type="button" class="btn" id="startReset"
-                    style="font-family: 'DM Serif Display', serif;" onclick="startGame();">Begin</button>
+
+
+            </div>
         </div>
     </div>
 
-    <iframe width="0" height="0" src="https://www.youtube.com/embed/glT_crHWifc?autoplay=1&loop=1" frameborder="0"
-        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <!-- Remove to play audio on win from JS -->
+    <!-- <iframe width="0" height="0" src="https://www.youtube.com/embed/glT_crHWifc?autoplay=1&loop=1" frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
 
     <script src="assets/javascript/app.js"></script>
 

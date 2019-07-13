@@ -1,130 +1,325 @@
-// Game
+//**************************
+        // Document Ready
+        //**************************
 
-var startGame = function () {
+        $(document).ready(function () {
 
-    console.log("Game Started");
+            //**************************
+            // VARIABLES
+            //**************************
 
-    var teams = [
-        'Hawks',
-        'Celtics',
-        'Nets',
-        'Hornets',
-        'Bulls',
-        'Cavaliers',
-        'Mavericks',
-        'Nuggets',
-        'Pistons',
-        'Warriors',
-        'Rockets',
-        'Pacers',
-        'Clippers',
-        'Lakers',
-        'Grizzlies',
-        'Heat',
-        'Bucks',
-        'Timberwolves',
-        'Pelicans',
-        'Knicks',
-        'Thunder',
-        'Magic',
-        'Sixers',
-        'Suns',
-        'Trail Blazers',
-        'Kings',
-        'Spurs',
-        'Raptors',
-        'Jazz',
-        'Wizards'
-    ];
+            // Guesses Left
+            var guessesLeft = 10;
 
-    // Random Team Selection
-    var team = Math.floor(Math.random() * teams[length]);
-    // Log Random Team Selection
-    console.log(team);
-    // Calculate the # characters in the string/ randomly selected value
-    var n = team.length;
-    // Log # of characters
-    console.log(n);
+            // Wins
+            var wins = 0;
 
-    var playerWins = 0;
-    var playerLoses = 0;
-    var playerGuessesLeft = 10;
-    var playerGuesses = "";
-    var word = $("#Word");
+            // Losses
+            var losses = 0;
 
-    // Take the randomly chosen word - loop though the word and seperate each letter into a div
-    for (i = 0; i < team.length; i++) {
-        // var = div
-        var letter =  $("<div>");
-        // add class
-        letter.addclass("letterDisplay");
-        // add value
-        letter.attr("id", team.charAt(i));
-        // location
-        letter.attr("location", team[i]);
-        // add text
-        letter.text("-");
-        // append
-        $("#letter").append(letter);
+            // var word possibilities
+            var arrayOptions = [
+                'hawks',
+                'celtics',
+                'nets',
+                'hornets',
+                'bulls',
+                'cavaliers',
+                'mavericks',
+                'nuggets',
+                'pistons',
+                'warriors',
+                'rockets',
+                'pacers',
+                'clippers',
+                'lakers',
+                'grizzlies',
+                'heat',
+                'bucks',
+                'timberwolves',
+                'pelicans',
+                'knicks',
+                'thunder',
+                'magic',
+                'sixers',
+                'suns',
+                'trail Blazers',
+                'kings',
+                'spurs',
+                'raptors',
+                'jazz',
+                'wizards'
+            ];
 
-    };
+            // log team awesome
+            // console.log("TA: " + arrayOptions);
 
-    document.onkeyup = function (event) {
-        // Variables
-        var userInput = event.key.LowerCase();
-        // Log user Input
-        console.log(userInput);
+            // choose a position in the array
+            var randomNum = Math.floor(Math.random() * arrayOptions.length);
 
-        var divIdSearch = "#" + userInput
+            // log Number in Array
+            console.log("Random Num: " + randomNum);
 
-        var match = team.match();
+            // define the word
+            var word = arrayOptions[randomNum].toLocaleLowerCase();
 
-        // count # of matches
-        // var numMatchs
+            // log the chosen person
+            console.log("word: " + word);
 
-        // If userInput === <div> value
-        if(match !== null) {
-        // update shown value from - to letter
-            $(divIdSearch).text(userInput);
-        // update # left n - numMatchs
-            n = n - numMatchs;
-        }
-        else{
-            // update guesses left
-            playerGuessesLeft--;
-            // if not, update previous guesses
-            playerGuesses = playerGuesses + ";" + userInput;
-        };
+            // Word Length
+            var n = word.length;
 
-        if(n===0){
-            //plus win
-            playerWins++;
-            //restart
-        };
+            // log word length
+            console.log("word Length: " + n);
 
-        if(playerGuessesLeft===0){
-            // plus loss
-            playerLoses--;
-            // restart
-        };
+            //**************************
+            // Display/print word
+            //**************************
 
-    };
-}
+            for (var i = 0; i < word.length; i++) {
+                // var = H3
+                var letter = $("<h3>");
+                // add value
+                letter.attr("value", word.charAt(i));
+                // add text
+                letter.text("-");
+                // append
+                $("#word").append(letter);
+            };
 
 
 
-// Press Button to Begin Game (Function)
-// Define Variables
-// Define loses variable
-// Define Wins variable
-// Define Current Guesses variable
-// Define Guesses Left variable
-// Var Team Array
-// var randomTeam  = (random team) from Array
-// Take the randomly chosen word
-// loop though the word and seperate each letter into an array 
-// print each letter individually onto page onto a <div> with text "-" & value = letter
-// when user inputs, loop through array to determine if the input = value
-// if true, update value 
-// if not, update previous guesses
-// update guesses left
+            //**************************
+            // Game Reset
+            //**************************
+
+            function GameReset() {
+
+                // Log Game has reset
+                console.log("Game has Reset");
+
+                //**************************
+                // Variables
+                //**************************
+
+                // Guesses Left
+                guessesLeft = 10;
+
+                // Print GuessesLeft
+                $("#guessesLeft").text(guessesLeft);
+
+                // Log Reset Guesses Left
+                console.log("RESET GL: " + guessesLeft);
+
+                // Log Reset Wins Left
+                console.log("RESET W: " + wins);
+
+                // Log Reset Losses Left
+                console.log("RESET L: " + losses);
+
+                // Reset Printed Guesses
+                $("#guesses").text("");
+
+                // var word possibilities
+                arrayOptions = [
+                    'hawks',
+                    'celtics',
+                    'nets',
+                    'hornets',
+                    'bulls',
+                    'cavaliers',
+                    'mavericks',
+                    'nuggets',
+                    'pistons',
+                    'warriors',
+                    'rockets',
+                    'pacers',
+                    'clippers',
+                    'lakers',
+                    'grizzlies',
+                    'heat',
+                    'bucks',
+                    'timberwolves',
+                    'pelicans',
+                    'knicks',
+                    'thunder',
+                    'magic',
+                    'sixers',
+                    'suns',
+                    'trail Blazers',
+                    'kings',
+                    'spurs',
+                    'raptors',
+                    'jazz',
+                    'wizards'
+                ];
+
+                // log team awesome
+                // console.log("RESET TA: " + arrayOptions);
+
+                // choose a position in the array
+                randomNum = Math.floor(Math.random() * arrayOptions.length);
+
+                // log Number in Array
+                console.log("RESET Random Num: " + randomNum);
+
+                // define the word
+                word = arrayOptions[randomNum].toLocaleLowerCase();
+
+                // log the chosen person
+                console.log("RESET word: " + word);
+
+                // Word Length
+                n = word.length;
+
+                // log word length
+                console.log("RESET word Length: " + n);
+
+                // empty word H3
+                $("#word").empty();
+
+                // Reset Match Variable
+                Match = false;
+
+                //**************************
+                // Display/print word
+                //**************************
+
+                for (var i = 0; i < word.length; i++) {
+                    // var = H3
+                    var letter = $("<h3>");
+                    // add value
+                    letter.attr("value", word.charAt(i));
+                    // add text
+                    letter.text("-");
+                    // append
+                    $("#word").append(letter);
+                };
+
+            }
+
+
+
+            //**************************
+            // Game
+            //**************************
+
+            document.onkeyup = function (event) {
+
+                // User Input
+                var userInput = event.key.toLowerCase();
+
+                // Is there a Match Variable
+                var match = false;
+
+                // log user Input
+                console.log("UI: " + userInput);
+
+                // GuessesLeft - 1
+                guessesLeft--;
+
+                // Print Guesses Left
+                $("#guessesLeft").text(guessesLeft);
+
+                // Log GuessesLeft
+                console.log("GL: " + guessesLeft);
+
+
+                //**************************
+                // Loop Through letters in word
+                //**************************
+
+                for (var i = 0; i < word.length; i++) {
+
+                    // define letter variable of letter in word
+                    var letter = word.charAt(i);
+
+                    // If user Input === letter
+                    if (letter === userInput) {
+
+                        // Update Match Variable
+                        match = true;
+
+                        // log if there was a match
+                        console.log("Match: " + match);
+
+                        // take the length of the letter - 1 for each match
+                        n--;
+
+                        // Log the value of n
+                        console.log("Value of n: " + n);
+                    }
+                }
+
+                //**************************
+                // Determine if there was a match
+                //**************************
+
+                if (match === true) {
+                    $("#word h3").each(function (index) {
+
+                        // Log the value of the H3 Letter
+                        console.log($(this).attr("value"));
+
+                        //**************************
+                        // Determine if the H3 letter === UserInput
+                        //**************************
+
+                        if ($(this).attr("value") === userInput) {
+
+                            // If match <H3> update text
+                            $(this).text(userInput);
+                        }
+                    });
+
+                } else {
+                    // If no match, add letter to past Guesses
+                    $("#guesses").append(userInput + ";");
+                }
+
+                //**************************
+                // When the user runs out of guesses
+                //**************************
+
+                if (guessesLeft === 0) {
+
+                    // Add Losses
+                    losses++
+
+                    // log losses
+                    console.log("Losses: " + losses);
+
+                    // print losses to page
+                    $("#losses").text(losses);
+
+                    // restart Game function
+                    GameReset();
+                }
+
+                //**************************
+                // If user guesses all letters correctly
+                //**************************
+
+                if (n === 0) {
+
+                    // Add Win
+                    wins++
+
+                    // log wins
+                    console.log("wins: " + wins);
+
+                    // Print Wins to Page
+                    $("#wins").text(wins);
+
+                    // Define Audio Win Music
+                    var audio = new Audio('../audio/NBAJam.mp3');
+
+                    // Play Audio file
+                    audio.play();
+
+                    // restart Game function
+                    GameReset();
+                }
+            }
+
+        })
