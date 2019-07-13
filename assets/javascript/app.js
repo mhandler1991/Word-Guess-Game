@@ -1,4 +1,26 @@
 //**************************
+//
+//                        ---                                     
+//                     -        --                             
+//                 --( /     \ )XXXXXXXXXXXXX                   
+//             --XXX(   O   O  )XXXXXXXXXXXXXXX-              
+//            /XXX(       U     )        XXXXXXX\               
+//          /XXXXX(              )--   XXXXXXXXXXX\             
+//         /XXXXX/ (      O     )   XXXXXX   \XXXXX\
+//         XXXXX/   /            XXXXXX   \   \XXXXX----        
+//         XXXXXX  /          XXXXXX         \  ----  -         
+// ---     XXX  /          XXXXXX      \           ---        
+//   --  --  /      /\  XXXXXX            /     ---=         
+//     -        /    XXXXXX              '--- XXXXXX         
+//       --\/XXX\ XXXXXX                      /XXXXX         
+//         \XXXXXXXXX                        /XXXXX/
+//          \XXXXXX                         /XXXXX/         
+//            \XXXXX--  /                -- XXXX/       
+//             --XXXXXXX---------------  XXXXX--         
+//                \XXXXXXXXXXXXXXXXXXXXXXXX-            
+//                  --XXXXXXXXXXXXXXXXXX-
+//
+//
         // Document Ready
         //**************************
 
@@ -312,10 +334,13 @@
                     $("#wins").text(wins);
 
                     // Define Audio Win Music
-                    var audio = new Audio('../audio/NBAJam.mp3');
+                    var audio = new Audio('assets/audio/NBAJam.mp3');
 
                     // Play Audio file
                     audio.play();
+
+                    // log audio is playing
+                    console.log("play win music");
 
                     // restart Game function
                     GameReset();
